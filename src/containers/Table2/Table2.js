@@ -133,7 +133,7 @@ const schema = {
     }
   }
 };
-const randomRows = generateRows(100, schema)
+const randomRows = generateRows(3, schema)
 
 
 const Detail = ({row}) => {

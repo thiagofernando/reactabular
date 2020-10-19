@@ -95,10 +95,10 @@ class Table extends Component {
       query         : {}, // search query
       sortingColumns: null, // reference to the sorting columns
       columns       : this.getColumns(this.props.columns), // initial columns
-      detailedRow   : [],
+      detailedRow   : {},
       pagination    : {
         page   : 1,
-        perPage: 100
+        perPage: 10
       },
     };
     
@@ -127,20 +127,19 @@ class Table extends Component {
       // console.log("AAA", column.header.formatters);
       if (!column.header.formatters) {
         column.header.formatters = [sortableHeader];
-        // if (column.header.userFormatters) column.header.formatters.push(...column.header.userFormatters);
+        if (column.header.userFormatters) column.header.formatters.push(...column.header.userFormatters);
       }
       
       if (column.cell && column.cell.isDetail && !column.cell.formatters) {
         column.cell.formatters = [
-          (value, {rowData, rowIndex}) => {
-            
+          (value, {rowData, rowIndex, }) => {
+             const up = !!this.state.detailedRow[rowData.id];
             return (
               <div>
                 <IconButton
-                  aria-label="Detalhar"
+                  aria-label="Detail"
                   onClick={() => this.manageDetail(rowData, rowIndex)}>
-                  {/*{this.state.detailRowArrow[rowIndex]}*/}
-                  {!!this.state.detailedRow[rowIndex] ? <KeyboardArrowUp fontSize="small"/> : <KeyboardArrowDown fontSize="small"/>}
+                  {up ? <KeyboardArrowUp fontSize="small"/> : <KeyboardArrowDown fontSize="small"/>}
                 </IconButton>
               </div>
             );
@@ -217,24 +216,21 @@ class Table extends Component {
     
     const newPagination = {...pagination};
     
-    console.log("oi", rowIndex)
-    
     if (lines[rowIndex + 1] && lines[rowIndex + 1].detailRow) {
-      
-      rowData.detailed      = false;
-      detailedRow[rowIndex] = false;
+      detailedRow[rowData.id]    = false;
+      lines[rowIndex].detailed = false;
       lines.splice(rowIndex + 1, 1);
       newPagination.perPage--;
     } else {
-      if (!lines[rowIndex].detail && callDetails) callDetails(rowData.id, rowIndex);
-      const newRow = {...rowData, detailRow: true, id: `${rowData.id}d`};
       
-      detailedRow[rowIndex] = true;
-      rowData.detailed      = true;
-      // lines[rowIndex].detailed = true;
+      if (!lines[rowIndex].detail && callDetails) callDetails(rowData.id, rowIndex);
+      const newRow          = {...rowData, detailRow: true, id: `${rowData.id}d`};
+      detailedRow[rowData.id] = true;
+      lines[rowIndex].detailed = true;
       lines.splice(rowIndex + 1, 0, newRow);
       newPagination.perPage++;
     }
+    
     
     this.setState({rows: lines, pagination: newPagination, detailedRow});
     
