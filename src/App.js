@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React                      from 'react';
+import { Route, Redirect,Switch } from 'react-router-dom';
+import { StylesProvider }         from '@material-ui/core/styles';
+import { useSelector }            from 'react-redux';
+import CssBaseline                from '@material-ui/core/CssBaseline';
+import Spinner                    from './components/Spinner';
+import Home                       from './containers/Home/Home';
+import Table1                     from './containers/Table1/Table1';
+import Table2                     from './containers/Table2/Table2';
+import Layout                     from './layout/Layout';
 
-function App() {
+
+
+const mountRoutes = () => {
+  
+  const routes = [];
+  
+  routes.push(<Route  exact path="/" key={'home'} > <Home/> </Route>);
+  routes.push(<Route  path="/table1" key={'table1'} > <Table1/> </Route>);
+  routes.push(<Route  path="/table2" key={'table2'} > <Table2/> </Route>);
+  
+  routes.push(<Redirect to="/" key={'redirect'}/>);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      {routes}
+    </Switch>
   );
-}
+};
+
+const App = () => {
+  
+  const {loading}     = useSelector(state => state.app);
+  
+  return (
+    <StylesProvider injectFirst>
+      <CssBaseline/>
+      {!!loading && <Spinner/>}
+      <Layout >
+        {mountRoutes()}
+      </Layout>
+    </StylesProvider>
+  );
+  
+  
+};
 
 export default App;

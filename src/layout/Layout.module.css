@@ -1,0 +1,47 @@
+.SiteContent {
+  flex-grow: 1;
+  height: 100vh;
+  /*overflow: auto;*/
+}
+
+.Root {
+  display: flex;
+}
+
+.HeaderSpacer {
+  min-height: 64px;
+}
+
+.Drawer {
+  flex-shrink: 0;
+  white-space: nowrap;
+  /*padding-right: 240px;*/
+
+}
+
+.DrawerPaper {
+  transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+  width: 240px;
+
+}
+
+.DrawerPaperClose {
+  overflow-x: hidden;
+  transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+  width: 72px;
+}
+
+.ToolbarIcon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8px;
+  min-height: 64px;
+
+}
+
+.Container {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  min-height: 60vh;
+}

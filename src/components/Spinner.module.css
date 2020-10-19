@@ -1,0 +1,13 @@
+
+.Spinner {
+
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  z-Index: 9999;
+}
+
+
+.Backdrop {
+  color: #fff;
+}

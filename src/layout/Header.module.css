@@ -1,0 +1,28 @@
+.Title {
+  flex-grow: 1;
+  color: #dfe1e1;
+}
+
+.AppBar {
+  z-index: 1201;
+  transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,margin 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+
+.AppBarShift {
+  z-index: 1201;
+  width:calc(100% - 240px);
+  margin-left: 240px;
+  transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,margin 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+}
+
+.Toolbar {
+  padding-right: 24px;
+}
+
+.MenuButton {
+  margin-right: 36px;
+}
+
+.MenuButtonHidden {
+  display: none;
+}

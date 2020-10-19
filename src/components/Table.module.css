@@ -1,0 +1,210 @@
+
+.MyTable {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.MyTable thead {
+  color: #fff;
+  border: 1px solid #ddd;
+}
+
+.MyTable thead th {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.MyTable thead tr {
+  background: #6c7ae0;
+}
+
+.MyTable tbody tr:nth-child(even) {
+  background-color: #D0E4F5
+}
+
+.MyTable tr {
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.MyTable th, td {
+  padding: 10px;
+  position: relative;
+}
+
+.MyTable th {
+  font-size: 15px;
+}
+
+.MyTable td {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  border-bottom: 1px dotted #ddd;
+  color: #666666;
+}
+
+.MyTable td:last-child {
+  border-bottom: none;
+  border-right: none;
+}
+
+.MyTable [inside="true"] {
+  background-color: cornsilk;
+}
+
+.Test tbody td:hover {
+  background:inherit
+}
+.Test tbody tr:hover {
+  background:inherit
+}
+
+.MyTable tbody td:hover {
+  background-color: rgba(215, 214, 214, 0.81);
+}
+
+
+
+.MyTable td:before {
+  content: attr(mobile-label);
+  float: left;
+  font-weight: bold;
+}
+
+.FilterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 3px 15px;
+}
+
+.Page {
+  /*display: flex;*/
+  /*overflow: auto;*/
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.Pagify {
+  display: flex;
+  margin: 1em;
+  padding: 0;
+}
+.Pagify div {
+  display: inline;
+}
+.Pagify span {
+  margin: 0;
+  margin-right: 1em;
+  padding: 0.5em;
+  cursor: pointer;
+  background: #ddd;
+}
+.Pagify .disabled span {
+  opacity: .4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.Ellipsis {
+  margin-right: 1em;
+  background: inherit;
+  cursor: default;
+}
+.Pagify a {
+  text-decoration: none;
+}
+
+.Select {
+  margin-right: 10px;
+}
+
+
+.Selected span {
+  background: #222;
+  color: #eee;
+  cursor: default;
+}
+
+
+@media screen and (min-width: 600px) {
+
+  /*.MyTable thead {*/
+  /*  visibility: visible;*/
+  /*}*/
+
+  .MyTable tr {
+    display: table-row;
+    border-bottom-width: 1px;
+    margin-bottom: 0;
+  }
+
+  .MyTable tr:nth-child(even) {
+    background: #fafafa;
+  }
+
+  .MyTable td {
+    display: table-cell;
+    text-align: center;
+    border-right: 1px dotted #ddd;
+    border-bottom: none;
+  }
+
+  .MyTable td:before {
+    content: "";
+    display: none;
+  }
+
+  .MyTable tbody > tr:hover {
+    background-color: #e8e8e5;
+  }
+
+
+  .MyTable td:hover::after {
+  /*.MyTable td:not[inside='true']:hover::after {*/
+    content: "";
+    position: absolute;
+    background-color: #e8e8e5;
+    left: 0;
+    top: -5000px;
+    height: 10000px;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .Inclusion{
+    text-align: right;
+  }
+
+}
+
+@media screen and (max-width: 599px) {
+
+   .MyTable thead tr {
+    display: flex;
+     flex-wrap: wrap;
+    /*flex-direction: column;*/
+    min-width: 300px;
+    /*justify-content: center;*/
+  }
+
+
+
+}
+
+.ScrollTable {
+  overflow-x: auto;
+}
+
+.Select {
+  padding-bottom: 10px;
+}
