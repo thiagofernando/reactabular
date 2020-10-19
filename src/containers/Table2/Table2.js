@@ -85,7 +85,12 @@ const cols = [
   {
     header: {
       label     : 'Detail',
-      formatters: []
+      formatters: [],
+      props: {
+        style: {
+          width: 100
+        }
+      }
     },
     cell  : {
       isDetail: true
@@ -133,7 +138,7 @@ const schema = {
     }
   }
 };
-const randomRows = generateRows(3, schema)
+const randomRows = generateRows(100, schema)
 
 
 const Detail = ({row}) => {
